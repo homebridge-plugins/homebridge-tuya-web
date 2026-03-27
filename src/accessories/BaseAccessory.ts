@@ -342,13 +342,28 @@ export abstract class BaseAccessory {
 
   public async getDeviceState(): Promise<DeviceState> {
     this.debug("Requesting device state");
+
+    // Fast path: return cached state immediately without going through the debounce
+    // delay (500 ms – 1500 ms), which would otherwise trigger the Homebridge
+    // "slow to respond" warning even when data is already available locally.
+    const cached = this.cache.get();
+    if (cached !== null) {
+      this.debug("Returning device state from cache (fast path)");
+      if (!TuyaBoolean(cached.online)) {
+        throw new DeviceOfflineError();
+      }
+      return cached;
+    }
+
+    // Cache miss: batch concurrent API calls through the debounce so that
+    // multiple characteristics requesting state at the same time only trigger
+    // one network round-trip.
     if (!this.debouncedDeviceStateRequestPromise) {
       this.debug("Creating new debounced promise");
       this.debouncedDeviceStateRequestPromise = new DebouncedPromise();
     }
 
     this.debug("Triggering debouncedDeviceStateRequest");
-    // Awaiting this promise is the responsibility of the caller.
     void this.debouncedDeviceStateRequest();
 
     return this.debouncedDeviceStateRequestPromise.promise;

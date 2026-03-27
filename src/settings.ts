@@ -24,3 +24,10 @@ export const TUYA_DISCOVERY_TIMEOUT = 600;
  * The standard timeout for Tuya device requests.
  */
 export const TUYA_DEVICE_TIMEOUT = 60;
+
+/**
+ * The HTTP request timeout (in milliseconds) used for all Tuya API calls.
+ * Prevents axios requests from hanging indefinitely on a slow or unresponsive
+ * network, which would block HomeKit characteristic read/write handlers.
+ */
+export const TUYA_REQUEST_TIMEOUT_MS = 5000;
