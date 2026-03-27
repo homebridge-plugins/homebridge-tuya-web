@@ -1,5 +1,5 @@
 import { BaseAccessory, CharacteristicConstructor } from "../BaseAccessory";
-import { LogLevel } from "homebridge";
+import { LogLevel, Nullable } from "homebridge";
 import {
   Characteristic,
   CharacteristicGetCallback,
@@ -99,11 +99,37 @@ export abstract class TuyaWebCharacteristic<
     if (char) {
       this.debug(JSON.stringify(char.props));
       if (this.getRemoteValue) {
-        char.on("get", this.getRemoteValue.bind(this));
+        // Use the modern promise-based onGet API so Homebridge can correctly
+        // measure and enforce its characteristic-read timeout.
+        const getHandler = this.getRemoteValue.bind(this);
+        char.onGet(
+          () =>
+            new Promise<Nullable<CharacteristicValue>>((resolve, reject) => {
+              getHandler((err, value) => {
+                if (err) {
+                  reject(err);
+                } else {
+                  resolve(value ?? null);
+                }
+              });
+            }),
+        );
       }
 
       if (this.setRemoteValue) {
-        char.on("set", this.setRemoteValue.bind(this));
+        const setHandler = this.setRemoteValue.bind(this);
+        char.onSet(
+          (value) =>
+            new Promise<void>((resolve, reject) => {
+              setHandler(value, (err) => {
+                if (err) {
+                  reject(err);
+                } else {
+                  resolve();
+                }
+              });
+            }),
+        );
       }
     }
 

@@ -20,6 +20,7 @@ import { TuyaPlatform } from "./platform";
 import delay from "../helpers/delay";
 import { DeviceOfflineError } from "../errors/DeviceOfflineError";
 import { URLSearchParams } from "url";
+import { TUYA_REQUEST_TIMEOUT_MS } from "../settings";
 
 export class TuyaWebApi {
   private session: Session | undefined;
@@ -178,6 +179,7 @@ export class TuyaWebApi {
           baseURL: this.authBaseUrl,
           data: formData,
           method: "POST",
+          timeout: TUYA_REQUEST_TIMEOUT_MS,
         })
       ).data;
     } else {
@@ -266,6 +268,7 @@ export class TuyaWebApi {
       url,
       data,
       method,
+      timeout: TUYA_REQUEST_TIMEOUT_MS,
     });
 
     return { data: response.data as T & { header: TuyaResponseHeader } };
