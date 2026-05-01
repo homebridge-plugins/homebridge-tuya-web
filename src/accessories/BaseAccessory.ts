@@ -28,6 +28,9 @@ import { DeviceOfflineError } from "../errors/DeviceOfflineError";
 import { TuyaBoolean } from "../helpers/TuyaBoolean";
 
 export type CharacteristicConstructor = WithUUID<new () => Characteristic>;
+type ServiceConstructor = WithUUID<
+  new (displayName?: string, subtype?: string) => Service
+>;
 
 type UpdateCallback = (
   data?: DeviceState,
@@ -160,9 +163,9 @@ export abstract class BaseAccessory {
     this.service = homebridgeAccessory.getService(this.serviceType);
     if (!this.service) {
       this.log.debug("Creating New Service %s", this.deviceConfig.id);
+      const ServiceType = this.serviceType as ServiceConstructor;
       this.service = homebridgeAccessory.addService(
-        this.serviceType,
-        this.deviceConfig.name,
+        new ServiceType(this.deviceConfig.name),
       );
     }
 
