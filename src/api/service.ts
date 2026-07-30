@@ -21,6 +21,12 @@ import delay from "../helpers/delay";
 import { DeviceOfflineError } from "../errors/DeviceOfflineError";
 import { URLSearchParams } from "url";
 
+// Requests to the Tuya Web API had no timeout, so on hosts where the request
+// stalls at the network layer (e.g. a broken IPv6 route to px1.tuya*.com that
+// never fails over to IPv4) the call hangs indefinitely with no error and no
+// log output, silently freezing token refresh, discovery and device control.
+const REQUEST_TIMEOUT_MS = 15000;
+
 export class TuyaWebApi {
   private session: Session | undefined;
   private authBaseUrl = "https://px1.tuyaeu.com";
@@ -178,6 +184,7 @@ export class TuyaWebApi {
           baseURL: this.authBaseUrl,
           data: formData,
           method: "POST",
+          timeout: REQUEST_TIMEOUT_MS,
         })
       ).data;
     } else {
@@ -266,6 +273,7 @@ export class TuyaWebApi {
       url,
       data,
       method,
+      timeout: REQUEST_TIMEOUT_MS,
     });
 
     return { data: response.data as T & { header: TuyaResponseHeader } };
