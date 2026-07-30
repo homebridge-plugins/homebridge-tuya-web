@@ -3,17 +3,15 @@
 # Tuya Web
 
 [![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
-[![certified-by-hoobs](https://badgen.net/badge/hoobs/certified/yellow)](https://plugins.hoobs.org/plugin/@milo526/homebridge-tuya-web)
 
-[![npm](https://img.shields.io/npm/v/@milo526/homebridge-tuya-web/latest?label=latest)](https://www.npmjs.com/package/@milo526/homebridge-tuya-web)
-[![npm](https://img.shields.io/npm/v/@milo526/homebridge-tuya-web/next?label=next)](https://www.npmjs.com/package/@milo526/homebridge-tuya-web/v/next)
-[![npm](https://img.shields.io/npm/dt/@milo526/homebridge-tuya-web)](https://www.npmjs.com/package/@milo526/homebridge-tuya-web)
-[![GitHub release](https://img.shields.io/github/release/milo526/homebridge-tuya-web.svg)](https://github.com/milo526/homebridge-tuya-web/releases)
+[![npm](https://img.shields.io/npm/v/@homebridge-plugins/homebridge-tuya-web/latest?label=latest)](https://www.npmjs.com/package/@homebridge-plugins/homebridge-tuya-web)
+[![npm](https://img.shields.io/npm/dt/@homebridge-plugins/homebridge-tuya-web)](https://www.npmjs.com/package/@homebridge-plugins/homebridge-tuya-web)
+[![GitHub release](https://img.shields.io/github/release/homebridge-plugins/homebridge-tuya-web.svg)](https://github.com/homebridge-plugins/homebridge-tuya-web/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [![Homebridge Discord](https://img.shields.io/discord/432663330281226270?color=728ED5&logo=discord&label=discord)](https://discord.gg/hZubhrz)
-[![GitHub issues](https://img.shields.io/github/issues/milo526/homebridge-tuya-web)](https://github.com/milo526/homebridge-tuya-web/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/milo526/homebridge-tuya-web)](https://github.com/milo526/homebridge-tuya-web/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/homebridge-plugins/homebridge-tuya-web)](https://github.com/homebridge-plugins/homebridge-tuya-web/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/homebridge-plugins/homebridge-tuya-web)](https://github.com/homebridge-plugins/homebridge-tuya-web/pulls)
 
 </span>
 
@@ -36,14 +34,14 @@ This plugin implements the following features:
 ## Installation
 
 ```
-npm i -g @milo526/homebridge-tuya-web
+npm i -g @homebridge-plugins/homebridge-tuya-web
 ```
 
 ## Support
 
 Please notice that there is no official support for this plugin.  
-If you have a question, please [start a discussion](https://github.com/milo526/homebridge-tuya-web/discussions/new).  
-If you would like to report a bug, please [open an issue](https://github.com/milo526/homebridge-tuya-web/issues/new/choose).
+If you have a question, please [start a discussion](https://github.com/homebridge-plugins/homebridge-tuya-web/discussions/new).  
+If you would like to report a bug, please [open an issue](https://github.com/homebridge-plugins/homebridge-tuya-web/issues/new/choose).
 
 You can also get community help in the [Homebridge Discord Server](https://discord.gg/kqNCe2D) or on the [Homebridge Reddit](https://www.reddit.com/r/homebridge/).
 
@@ -191,7 +189,7 @@ There is currently support for the following device types within this plugin:
 
 # How to check whether the API this library uses can control your device?
 
-- Copy [this script](https://github.com/milo526/homebridge-tuya-web/blob/master/tools/debug_discovery.py) to your PC with Python
+- Copy [this script](https://github.com/homebridge-plugins/homebridge-tuya-web/blob/latest/tools/debug_discovery.py) to your PC with Python
   installed or to https://repl.it/
 - Set/update config inside and run it
 - Check if your devices are listed

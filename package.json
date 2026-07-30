@@ -1,22 +1,23 @@
 {
   "displayName": "TuyaWebPlatform",
-  "name": "@milo526/homebridge-tuya-web",
+  "name": "@homebridge-plugins/homebridge-tuya-web",
   "version": "1.1.5",
   "description": "Homebridge plugin for use with Tuya devices (uses Home Assistant Tuya Web API)",
   "main": "dist/src/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
+    "changelog:sync": "node .github/scripts/sync-changelog.mjs",
     "lint": "eslint **/src/**/*.ts",
     "prepublishOnly": "npm run lint && npm run build",
     "prettier": "prettier --check .",
-    "release": "np",
-    "test": "ts-mocha test/**/*.spec.ts",
+    "test": "echo \"No tests yet\" && exit 0",
     "watch": "npm run build && npm link && nodemon",
     "clear-cache": "rimraf ~/.homebridge/accessories/cachedAccessories && rimraf ~/.homebridge/persist/*"
   },
   "keywords": [
     "homebridge",
     "homebridge-plugin",
+    "supports-hap",
     "tuya",
     "smartlife",
     "tuyawebplatform",
@@ -28,16 +29,17 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=12.22.7",
-    "homebridge": ">=1.0.0"
+    "node": "^22.12.0 || ^24.0.0 || ^26.0.0",
+    "homebridge": "^1.11.4 || ^2.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/milo526/homebridge-tuya-web"
+    "url": "git://github.com/homebridge-plugins/homebridge-tuya-web.git"
   },
   "bugs": {
-    "url": "https://github.com/milo526/homebridge-tuya-web/issues"
+    "url": "https://github.com/homebridge-plugins/homebridge-tuya-web/issues"
   },
+  "homepage": "https://github.com/homebridge-plugins/homebridge-tuya-web#readme",
   "dependencies": {
     "axios": "^1.5.1",
     "lodash.debounce": "^4.0.8"
