@@ -160,10 +160,23 @@ export abstract class BaseAccessory {
     this.service = homebridgeAccessory.getService(this.serviceType);
     if (!this.service) {
       this.log.debug("Creating New Service %s", this.deviceConfig.id);
-      this.service = homebridgeAccessory.addService(
-        this.serviceType,
-        this.deviceConfig.name,
-      );
+      // `addService` infers its argument list from the BASE Service
+      // constructor, which is `(displayName, UUID, subtype?)` - so it demands a
+      // UUID. Every value actually stored in `serviceType` is a concrete
+      // service (Lightbulb, Switch, ...) whose constructor is
+      // `(displayName?, subtype?)` and which supplies its own UUID, so the
+      // two-argument call below is right at runtime. Narrowing the signature
+      // here keeps that call while dropping the UUID the base type asks for.
+      // Do not "fix" this by passing a third argument: on a concrete service
+      // that argument is the SUBTYPE, and setting it would change the identity
+      // of every existing service.
+      const addService = homebridgeAccessory.addService.bind(
+        homebridgeAccessory,
+      ) as (
+        serviceConstructor: WithUUID<typeof Service>,
+        displayName: string,
+      ) => Service;
+      this.service = addService(this.serviceType, this.deviceConfig.name);
     }
 
     homebridgeAccessory.on("identify", this.onIdentify.bind(this));
