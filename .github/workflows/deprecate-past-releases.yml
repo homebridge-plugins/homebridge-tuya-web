@@ -1,0 +1,36 @@
+name: Deprecate Past Pre-Releases
+run-name: Deprecate Past Pre-Releases - ${{ inputs.execute && 'Execute' || 'Dry Run' }} (keep ${{ inputs.keep }})
+
+on:
+  workflow_dispatch:
+    inputs:
+      execute:
+        description: Execute the deprecation and cleanup actions. Default is dry run (false).
+        type: boolean
+        default: false
+      keep:
+        description: How many of the most recent pre-releases to keep. Use 0 to deprecate every pre-release.
+        type: string
+        default: '5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deprecate-previous-pre-release-data
+  cancel-in-progress: true
+
+jobs:
+  deprecate-previous-pre-release-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Deprecate Past Pre-Releases
+        uses: homebridge/deprecate-past-pre-releases@v1
+        with:
+          execute: ${{ inputs.execute }}
+          keep: ${{ inputs.keep }}
+          npm-token: ${{ secrets.NPM_DEPRECATION_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
