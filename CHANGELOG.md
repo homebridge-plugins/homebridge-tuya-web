@@ -17,6 +17,7 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - fix: compile against the service types in the current hap-nodejs
 - chore(github): replace the workflows with the shared org ones, and drop the credentials-only test
 - chore: publish under the homebridge plugins org
+- fix: add request timeout to Tuya Web API calls (@insainty)
 
 ## v1.1.5 (2023-10-08)
 
