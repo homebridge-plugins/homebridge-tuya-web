@@ -14,6 +14,9 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - chore(deps-dev): bump braces from 3.0.2 to 3.0.3
 - chore(deps): bump ip and homebridge
 - chore(deps-dev): bump lodash from 4.17.21 to 4.17.23
+- fix: compile against the service types in the current hap-nodejs
+- chore(github): replace the workflows with the shared org ones, and drop the credentials-only test
+- chore: publish under the homebridge plugins org
 
 ## v1.1.5 (2023-10-08)
 
