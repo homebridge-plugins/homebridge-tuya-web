@@ -64,6 +64,6 @@ export class SaturationCharacteristic extends TuyaWebCharacteristic<ColorAccesso
       stateValue,
       !callback,
     );
-    callback && callback(null, stateValue);
+    callback?.(null, stateValue);
   }
 }

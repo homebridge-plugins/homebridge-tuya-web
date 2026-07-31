@@ -60,7 +60,7 @@ export class CurrentDoorStateCharacteristic extends TuyaWebCharacteristic {
         stateValue,
         !callback,
       );
-      callback && callback(null, stateValue);
+      callback?.(null, stateValue);
     } else if (["true", "false"].includes(String(data?.state).toLowerCase())) {
       const stateValue = TuyaBoolean(data.state as ExtendedBoolean)
         ? this.CurrentDoorState.OPEN
@@ -70,10 +70,9 @@ export class CurrentDoorStateCharacteristic extends TuyaWebCharacteristic {
         stateValue,
         !callback,
       );
-      callback && callback(null, stateValue);
+      callback?.(null, stateValue);
     } else {
-      callback &&
-        callback(new Error(`Unexpected state value provided: ${data?.state}`));
+      callback?.(new Error(`Unexpected state value provided: ${data?.state}`));
     }
   }
 }

@@ -64,6 +64,6 @@ export class HueCharacteristic extends TuyaWebCharacteristic<ColorAccessory> {
       stateValue,
       !callback,
     );
-    callback && callback(null, stateValue);
+    callback?.(null, stateValue);
   }
 }

@@ -107,9 +107,9 @@ export class TargetTemperatureCharacteristic extends TuyaWebCharacteristic {
         temperature,
         !callback,
       );
-      callback && callback(null, temperature);
+      callback?.(null, temperature);
     } else {
-      callback && callback(new Error("Could not get temperature from data"));
+      callback?.(new Error("Could not get temperature from data"));
     }
   }
 }

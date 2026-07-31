@@ -44,9 +44,12 @@ export type HomebridgeAccessory = PlatformAccessory<
  * parse the user config and discover/register accessories with Homebridge.
  */
 export class TuyaWebPlatform implements DynamicPlatformPlugin {
-  public readonly Service: typeof Service = this.api.hap.Service;
-  public readonly Characteristic: typeof Characteristic =
-    this.api.hap.Characteristic;
+  // ⚠️ Assigned in the constructor body, not here. These read from `this.api`,
+  // which is a constructor parameter property - and under the class field
+  // semantics that `target: ES2022` turns on, field initialisers run BEFORE
+  // parameter properties are bound, so `this.api` would still be undefined.
+  public readonly Service: typeof Service;
+  public readonly Characteristic: typeof Characteristic;
 
   // this is used to track restored cached accessories
   public readonly accessories = new Map<string, HomebridgeAccessory>();
@@ -63,9 +66,12 @@ export class TuyaWebPlatform implements DynamicPlatformPlugin {
     public readonly config: TuyaWebConfig,
     public readonly api: API,
   ) {
+    this.Service = this.api.hap.Service;
+    this.Characteristic = this.api.hap.Characteristic;
+
     this.log.debug("Finished initializing platform:", this.config.name);
 
-    if (!config || !config.options) {
+    if (!config?.options) {
       this.log.info(
         "No options found in configuration file, disabling plugin.",
       );

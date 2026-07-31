@@ -114,7 +114,7 @@ export class BrightnessCharacteristic extends TuyaWebCharacteristic {
         homekitValue,
         !callback,
       );
-      callback && callback(null, homekitValue);
+      callback?.(null, homekitValue);
       return;
     }
 
@@ -124,6 +124,6 @@ export class BrightnessCharacteristic extends TuyaWebCharacteristic {
 
     this.error(error.message);
 
-    callback && callback(error);
+    callback?.(error);
   }
 }

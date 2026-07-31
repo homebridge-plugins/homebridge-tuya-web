@@ -21,6 +21,7 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - chore: ignore the jetbrains ide folder
 - chore: approve the fsevents install script to silence the npm install warning
 - chore(deps): update prettier and reformat to match its new style
+- chore(deps): update every dependency to its latest, moving to typescript 6 and eslint 10
 
 ## v1.1.5 (2023-10-08)
 

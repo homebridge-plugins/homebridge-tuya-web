@@ -25,6 +25,6 @@ export class ObstructionDetectedCharacteristic extends TuyaWebCharacteristic {
       false,
       !callback,
     );
-    callback && callback(null, false);
+    callback?.(null, false);
   }
 }

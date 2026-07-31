@@ -47,9 +47,9 @@ export class CurrentTemperatureCharacteristic extends TuyaWebCharacteristic {
         currentTemperature,
         !callback,
       );
-      callback && callback(null, currentTemperature);
+      callback?.(null, currentTemperature);
     } else {
-      callback && callback(new Error("Could not get temperature from data"));
+      callback?.(new Error("Could not get temperature from data"));
     }
   }
 }

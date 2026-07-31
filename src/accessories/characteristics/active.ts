@@ -53,10 +53,9 @@ export class ActiveCharacteristic extends TuyaWebCharacteristic {
         stateValue,
         !callback,
       );
-      callback && callback(null, stateValue);
+      callback?.(null, stateValue);
     } else {
-      callback &&
-        callback(new Error("Could not find required property 'state'"));
+      callback?.(new Error("Could not find required property 'state'"));
     }
   }
 }

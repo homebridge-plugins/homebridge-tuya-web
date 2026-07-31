@@ -270,7 +270,7 @@ export abstract class BaseAccessory {
   ): void {
     if (this.updateCallbackList.has(characteristic)) {
       const updateCallback = this.updateCallbackList.get(characteristic);
-      updateCallback && updateCallback(data);
+      updateCallback?.(data);
     }
   }
 

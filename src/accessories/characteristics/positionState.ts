@@ -29,6 +29,6 @@ export class PositionStateCharacteristic extends TuyaWebCharacteristic {
       this.PositionState.STOPPED,
       !callback,
     );
-    callback && callback(null, this.PositionState.STOPPED);
+    callback?.(null, this.PositionState.STOPPED);
   }
 }

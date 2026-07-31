@@ -53,6 +53,6 @@ export class MomentaryOnCharacteristic extends TuyaWebCharacteristic {
   }
 
   updateValue(data: DeviceState, callback?: CharacteristicGetCallback): void {
-    callback && callback(null, 0);
+    callback?.(null, 0);
   }
 }

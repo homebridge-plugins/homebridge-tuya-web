@@ -120,10 +120,9 @@ export class ColorTemperatureCharacteristic extends TuyaWebCharacteristic {
         homekitColorTemp,
         !callback,
       );
-      callback && callback(null, homekitColorTemp);
+      callback?.(null, homekitColorTemp);
     } else {
-      callback &&
-        callback(new Error("Could not find required property 'color_temp'"));
+      callback?.(new Error("Could not find required property 'color_temp'"));
     }
   }
 }

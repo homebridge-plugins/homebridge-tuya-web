@@ -55,7 +55,7 @@ export class CurrentHeatingCoolingStateCharacteristic extends TuyaWebCharacteris
         !callback,
       );
       this.debug("[UPDATE] %S", "OFF");
-      callback && callback(null, this.CurrentHeatingCoolingState.OFF);
+      callback?.(null, this.CurrentHeatingCoolingState.OFF);
       return;
     }
 
@@ -74,6 +74,6 @@ export class CurrentHeatingCoolingStateCharacteristic extends TuyaWebCharacteris
       mode,
       !callback,
     );
-    callback && callback(null, mode);
+    callback?.(null, mode);
   }
 }

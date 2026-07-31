@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "changelog:sync": "node .github/scripts/sync-changelog.mjs",
-    "lint": "eslint **/src/**/*.ts",
+    "lint": "eslint .",
     "prepublishOnly": "npm run lint && npm run build",
     "prettier": "prettier --check .",
     "test": "echo \"No tests yet\" && exit 0",
@@ -41,30 +41,23 @@
   },
   "homepage": "https://github.com/homebridge-plugins/homebridge-tuya-web#readme",
   "dependencies": {
-    "axios": "^1.5.1",
+    "axios": "^1.19.0",
     "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
-    "@types/lodash.debounce": "^4.0.7",
-    "@types/mocha": "^10.0.2",
-    "@types/node": "^16.11.12",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
-    "chai": "^4.3.7",
-    "eslint": "^8.50.0",
+    "@eslint/js": "^10.0.1",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
-    "homebridge": "^1.3.8",
-    "mocha": "^10.2.0",
-    "nodemon": "^3.0.1",
-    "np": "^8.0.4",
+    "homebridge": "^2.2.1",
+    "nodemon": "^3.1.14",
     "prettier": "^3.9.6",
-    "rimraf": "^5.0.5",
-    "ts-mocha": "^10.0.0",
-    "ts-node": "^10.9.1",
-    "ts-xor": "^1.3.0",
-    "typescript": "^5.2.2"
+    "rimraf": "^6.1.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0"
   },
   "allowScripts": {
-    "fsevents@2.3.2": true
+    "fsevents@2.3.3": true
   }
 }

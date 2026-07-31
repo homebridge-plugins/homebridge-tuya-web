@@ -203,8 +203,8 @@ export class TuyaWebApi {
     if (data.responseStatus === "error") {
       if (typeof data.errorMsg === "string" && !retryingAfterError) {
         // If we are requesting tokens too often we get an error: like "you cannot auth exceed once in 180 seconds"
-        const matches = data.errorMsg.match(
-          /you cannot auth exceed once in (\d+) seconds/,
+        const matches = /you cannot auth exceed once in (\d+) seconds/.exec(
+          data.errorMsg,
         );
 
         if (matches) {
