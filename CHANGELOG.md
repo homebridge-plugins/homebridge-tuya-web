@@ -18,6 +18,7 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - chore(github): replace the workflows with the shared org ones, and drop the credentials-only test
 - chore: publish under the homebridge plugins org
 - fix: add request timeout to Tuya Web API calls (@insainty)
+- chore: ignore the jetbrains ide folder
 
 ## v1.1.5 (2023-10-08)
 
