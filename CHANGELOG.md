@@ -19,6 +19,7 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - chore: publish under the homebridge plugins org
 - fix: add request timeout to Tuya Web API calls (@insainty)
 - chore: ignore the jetbrains ide folder
+- chore: approve the fsevents install script to silence the npm install warning
 
 ## v1.1.5 (2023-10-08)
 
