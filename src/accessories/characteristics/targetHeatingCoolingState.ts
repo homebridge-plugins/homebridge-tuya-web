@@ -123,8 +123,8 @@ export class TargetHeatingCoolingStateCharacteristic extends TuyaWebCharacterist
       mode === this.TargetHeatingCoolingState.HEAT
         ? "HEAT"
         : mode === this.TargetHeatingCoolingState.COOL
-        ? "COOL"
-        : "AUTO",
+          ? "COOL"
+          : "AUTO",
     );
     this.accessory.setCharacteristic(
       this.homekitCharacteristic,

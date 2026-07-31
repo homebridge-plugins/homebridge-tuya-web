@@ -20,6 +20,7 @@ Releases before v1.1.5 predate this file — see the [GitHub releases](https://g
 - fix: add request timeout to Tuya Web API calls (@insainty)
 - chore: ignore the jetbrains ide folder
 - chore: approve the fsevents install script to silence the npm install warning
+- chore(deps): update prettier and reformat to match its new style
 
 ## v1.1.5 (2023-10-08)
 

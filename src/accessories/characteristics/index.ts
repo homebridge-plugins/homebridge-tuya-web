@@ -66,7 +66,6 @@ export type GeneralCharacteristic =
   | typeof TemperatureDisplayUnitsCharacteristic;
 
 export type ColorCharacteristic =
-  | typeof HueCharacteristic
-  | typeof SaturationCharacteristic;
+  typeof HueCharacteristic | typeof SaturationCharacteristic;
 
 export type Characteristic = GeneralCharacteristic | ColorCharacteristic;
