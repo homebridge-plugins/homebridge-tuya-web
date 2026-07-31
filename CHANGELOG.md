@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. This projec
 
 Releases before v1.1.5 predate this file — see the [GitHub releases](https://github.com/homebridge-plugins/homebridge-tuya-web/releases) for that history.
 
-## v1.1.6 (Pending Release)
+## v1.1.6 (2026-07-31)
 
 ### Changed
 
