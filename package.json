@@ -58,6 +58,6 @@
     "typescript-eslint": "^8.65.0"
   },
   "allowScripts": {
-    "fsevents@2.3.3": true
+    "fsevents": true
   }
 }

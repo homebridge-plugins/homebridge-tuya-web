@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. This projec
 
 Releases before v1.1.5 predate this file — see the [GitHub releases](https://github.com/homebridge-plugins/homebridge-tuya-web/releases) for that history.
 
+## v1.1.7 (Pending Release)
+
+### Changed
+
+- chore: allow dependency install scripts by package name rather than pinned version, so a version bump cannot silently block a native build
+
 ## v1.1.6 (2026-07-31)
 
 ### Changed
